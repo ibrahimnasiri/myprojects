@@ -1,0 +1,37 @@
+#!/bin/bash
+
+Create folders if they don't exist
+create_folders() {
+echo "Creating folders..."
+mkdir -p ~/tools
+mkdir -p ~/tools/web
+mkdir -p ~/tools/exploitation
+mkdir -p ~/tools/misc
+}
+
+Download tools and move them to the appropriate folders
+download_tools() {
+echo "Downloading tools..."
+
+# Download tools for web
+echo "Downloading web tools..."
+git clone https://github.com/s0md3v/XSStrike.git ~/tools/web/XSStrike
+git clone https://github.com/sqlmapproject/sqlmap.git ~/tools/web/sqlmap
+
+# Download tools for exploitation
+echo "Downloading exploitation tools..."
+git clone https://github.com/offensive-security/exploitdb.git ~/tools/exploitation/exploitdb
+git clone https://github.com/rapid7/metasploit-framework.git ~/tools/exploitation/metasploit-framework
+
+# Download miscellaneous tools
+echo "Downloading miscellaneous tools..."
+git clone https://github.com/danielmiessler/SecLists.git ~/tools/misc/SecLists
+}
+
+main() {
+create_folders
+download_tools
+echo "All tools downloaded and organized successfully!"
+}
+
+main
